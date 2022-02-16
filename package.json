@@ -1,0 +1,18 @@
+{
+  "name": "Orsini-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Orsini microsservice of the FDC project",
+  "main": "index.js",
+  "author": "Gabriel Bojikian",
+  "license": "Apache",
+  "dependencies": {
+    "@types/uuid": "^8.3.4",
+    "express": "^4.17.2",
+    "kafkajs": "^1.16.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "typescript": "^4.5.5"
+  }
+}
