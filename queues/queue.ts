@@ -1,3 +1,5 @@
+import { IQueue } from "./IQueue";
+
 export class Queue<T> implements IQueue<T> {
     private storage: T[] = [];
   
