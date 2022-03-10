@@ -1,11 +1,12 @@
-// src/consumer.ts
 import { v4 as uuidv4 } from 'uuid';
 import {Kafka} from 'kafkajs';
 import { IQueue } from '../queues/IQueue';
 
+const config = require(process.argv[0]);
+
 const kafka = new Kafka({
   clientId: 'orsini',
-  brokers: ['0.0.0.0:9092']
+  brokers: [config.redPanda.host + config.redPanda.port]
 });
 
 const consumer = kafka.consumer({ groupId: uuidv4() });
