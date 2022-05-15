@@ -1,4 +1,5 @@
 const express = require('express');
+const consume = require('consumer.ts');
 const config = process.argv[0];
 const app = express();
 const http = require('http');
@@ -9,6 +10,10 @@ const io = new Server(server);
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
+
+consume(({topic, partition, message}) => {
+  io.sockets.emit('newMessage', {topic, partition, message})
+})
 
 io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
