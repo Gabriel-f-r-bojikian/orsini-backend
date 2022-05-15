@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Gabriel Bojikian",
   "license": "Apache",
+  "scripts": {
+    "index": "ts-node ./src/index.ts",
+    "integrationTest": "ts-node ./Test/Integration/TestProducer.ts"
+  },
   "dependencies": {
     "@types/uuid": "^8.3.4",
     "express": "^4.17.2",

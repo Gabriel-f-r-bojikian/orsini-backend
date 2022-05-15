@@ -7,7 +7,7 @@ const config = require(process.argv[0]);
 
 const kafka = new Kafka({
   clientId: 'orsini',
-  brokers: [config.redPanda.host + config.redPanda.port]
+  brokers: [config.redPanda.host + ":" + config.redPanda.port]
 });
 
 const consumer = kafka.consumer({ groupId: uuidv4() });

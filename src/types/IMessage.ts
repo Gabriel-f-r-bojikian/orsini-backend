@@ -1,6 +1,6 @@
 export interface IMessage {
-    id:         string;
-    timestamp:  string;
+    id:         String;
+    timestamp:  String;
     Va:         number;
     Vb:         number;
     Vc:         number;
