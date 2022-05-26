@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-consume(({topic, partition, message}) => {
+consumer.connect(({topic, partition, message}) => {
   io.sockets.emit('newMessage', {topic, partition, message})
 })
 

@@ -21,8 +21,8 @@ producer.connect().then(() => {
 function sendMessages() {
     const interval = 1000/60;
     let instant = 0;
-    const mensagem = criaMensagem(instant);
     setInterval(() => {
+        const mensagem = criaMensagem(instant);
         console.log("Timestamp " + instant + " - Sending message - " + mensagem);
         producer.send({
             topic: 'test-topic',
