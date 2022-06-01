@@ -1,5 +1,5 @@
 {
-  "name": "Orsini-backend",
+  "name": "orsini-backend",
   "version": "1.0.0",
   "description": "Backend for the Orsini microsservice of the FDC project",
   "main": "index.js",

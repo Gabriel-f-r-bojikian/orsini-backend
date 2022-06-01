@@ -14,7 +14,7 @@ const consumer = kafka.consumer({ groupId: uuidv4() });
 
 export function connect(callback: Function) {
   return consumer.connect().then(() =>
-    consumer.subscribe({topic: 'dev'}).then(() =>
+    consumer.subscribe({topic: 'test-topic'}).then(() =>
       consumer.run({
         eachMessage: async ({topic, partition, message}) => {
           console.log("topic " + topic + " partition " + partition + " message " + message);
