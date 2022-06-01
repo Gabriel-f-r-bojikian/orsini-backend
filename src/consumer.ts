@@ -4,7 +4,7 @@ import { IQueue } from '../queues/IQueue';
 import { IMessage } from './types/IMessage';
 import { IKafkaMessage } from './types/IKafkaMessage';
 
-const config = require(process.argv[0]);
+const config = require("../config/config.json");
 
 const kafka = new Kafka({
   clientId: 'orsini',
@@ -31,7 +31,7 @@ export function disconnect() {
   consumer.disconnect();
 }
 
-function handleMessage(queue: IQueue<Object>, message: IKafkaMessage) {
+function handleMessage(queue: IQueue<Object>, message: { value: Buffer; }) {
   const formattedValue = JSON.parse((message.value as Buffer).toString()); // everything comes as a buffer
   queue.enqueue(formattedValue);
   console.log(`${formattedValue.user}: ${formattedValue.message}`)
