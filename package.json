@@ -6,7 +6,7 @@
   "author": "Gabriel Bojikian",
   "license": "Apache",
   "scripts": {
-    "index": "ts-node ./src/index.js",
+    "index": "ts-node ./src/index.ts",
     "integrationTest": "ts-node ./Test/Integration/TestProducer.ts"
   },
   "dependencies": {
