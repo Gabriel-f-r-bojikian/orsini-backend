@@ -1,27 +1,32 @@
 const express = require('express');
-const consume = require('consumer.ts');
+const http = require('http');
+const cors = require("cors");
+const consumer = require('./consumer');
 const config = process.argv[0];
 const app = express();
-const http = require('http');
+app.use(cors());
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server,{
+  cors: {
+    origin: "http://localhost:2999",
+    methods: ["GET", "POST"],
+  }
+});
 
 app.get('/', (req: any, res: any) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-consume(({topic, partition, message}: any) => {
-  // io.sockets.emit('newMessage', {topic, partition, message})
-  console.log(message);
+consumer.connect(({topic, partition, message}: any) => {
+  io.sockets.emit('incoming message', message)
+  console.log("Sending message...");
 })
 
 io.on('connection', (socket: any) => {
-    socket.on('chat message', (msg: any) => {
-      io.emit('chat message', msg);
-    });
-  });
+    console.log(`New Socket connection: ${socket.id}`)
+});
 
-server.listen("3000", () => {
-    console.log(`App listening on port 3000`);
+server.listen(2999, () => {
+    console.log(`App listening on port 2999`);
 });
