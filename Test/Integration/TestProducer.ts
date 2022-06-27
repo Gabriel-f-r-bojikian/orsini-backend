@@ -19,10 +19,10 @@ producer.connect().then(() => {
 });
 
 function sendMessages() {
-    const interval = 1000/60;
+    const interval = 1000/600;
     let instant = 0;
     setInterval(() => {
-        const mensagem = criaMensagem(instant);
+        let mensagem = criaMensagem(instant);
         console.log("Timestamp " + instant + " - Sending message - " + mensagem);
         producer.send({
             topic: 'test-topic',
