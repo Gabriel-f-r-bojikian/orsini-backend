@@ -19,7 +19,9 @@ app.get('/', (req: any, res: any) => {
 });
 
 consumer.connect(({topic, partition, message}: any) => {
-  io.sockets.emit('incoming message', message)
+  const formattedValue = JSON.parse((message.value as Buffer).toString());
+  const jsonValue = (message.value as Buffer).toString();
+  io.sockets.emit('incoming message', formattedValue);
   console.log("Sending message...");
 })
 
